@@ -92,7 +92,7 @@ void Game::UpdateModel()
 			if (snakeSpeedUpCounter >= snakeSpeedUpPeriod)
 			{
 				snakeSpeedUpCounter = 0;
-				snakeMovePeriod = std::max(snakeMovePeriod - 1, snakeMovePeriod);
+				snakeMovePeriod = std::max(snakeMovePeriod - 1, snakeMovePeriodMin);
 			}
 		}
 	}
