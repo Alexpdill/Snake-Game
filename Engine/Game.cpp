@@ -44,6 +44,7 @@ void Game::Go()
 
 void Game::UpdateModel()
 {
+	const float dt = ft.Mark();
 	if (gameIsStarted)
 	{
 		if (!gameIsOver)
@@ -63,12 +64,12 @@ void Game::UpdateModel()
 			if (wnd.kbd.KeyIsPressed(VK_RIGHT))
 			{
 				delta_loc = { 1,0 };
-			}
+			} 
 
-			++snakeMoveCounter;
+			snakeMoveCounter +=dt;
 			if (snakeMoveCounter >= snakeMovePeriod)
 			{
-				snakeMoveCounter = 0;
+				snakeMoveCounter -= snakeMovePeriod;
 				const Location next = snake.GetNextHeadLocation(delta_loc);
 				if (!brd.IsInsideBoard(next) || snake.IsInTileExceptEnd(next))
 				{
@@ -90,12 +91,7 @@ void Game::UpdateModel()
 					sfxSlither.Play(rng, 0.08f);
 				}
 			}
-			++snakeSpeedUpCounter;
-			if (snakeSpeedUpCounter >= snakeSpeedUpPeriod)
-			{
-				snakeSpeedUpCounter = 0;
-				snakeMovePeriod = std::max(snakeMovePeriod - 1, snakeMovePeriodMin);
-			}
+			snakeMovePeriod = std::max( snakeMovePeriod - dt * snakeSpeedUpFactor, snakeMovePeriodMin);
 		}
 	}
 	else
