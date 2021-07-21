@@ -142,6 +142,7 @@
     <ClInclude Include="ChiliWin.h" />
     <ClInclude Include="Colors.h" />
     <ClInclude Include="DXErr.h" />
+    <ClInclude Include="FrameTimer.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Goal.h" />
     <ClInclude Include="Graphics.h" />
@@ -151,11 +152,19 @@
     <ClInclude Include="Mouse.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Snake.h" />
+    <ClInclude Include="Sound.h" />
+    <ClInclude Include="SoundEffect.h" />
     <ClInclude Include="SpriteCodex.h" />
+    <ClInclude Include="XAudio\audiodefs.h" />
+    <ClInclude Include="XAudio\comdecl.h" />
+    <ClInclude Include="XAudio\XAudio2.h" />
+    <ClInclude Include="XAudio\XAudio2fx.h" />
+    <ClInclude Include="XAudio\xma2defs.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Board.cpp" />
     <ClCompile Include="DXErr.cpp" />
+    <ClCompile Include="FrameTimer.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Goal.cpp" />
     <ClCompile Include="Graphics.cpp" />
@@ -164,6 +173,7 @@
     <ClCompile Include="MainWindow.cpp" />
     <ClCompile Include="Mouse.cpp" />
     <ClCompile Include="Snake.cpp" />
+    <ClCompile Include="Sound.cpp" />
     <ClCompile Include="SpriteCodex.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -233,6 +243,19 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="Chili.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="Sounds\Eat.wav" />
+    <Media Include="Sounds\Fart.wav" />
+    <Media Include="Sounds\Music_Loop.wav" />
+    <Media Include="Sounds\Slither0.wav" />
+    <Media Include="Sounds\Slither1.wav" />
+    <Media Include="Sounds\Slither2.wav" />
+    <Media Include="Sounds\Title.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="XAudio\XAudio2_7_32.dll" />
+    <None Include="XAudio\XAudio2_7_64.dll" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -31,6 +31,7 @@ Game::Game( MainWindow& wnd )
 	snake({2,2}),
 	goal(rng,brd,snake)
 {
+	sndTitle.Play(1.0f, 1.0f);
 }
 
 void Game::Go()
@@ -72,6 +73,8 @@ void Game::UpdateModel()
 				if (!brd.IsInsideBoard(next) || snake.IsInTileExceptEnd(next))
 				{
 					gameIsOver = true;
+					sndFart.Play();
+					sndMusic.StopAll();
 				}
 				else
 				{
@@ -79,13 +82,12 @@ void Game::UpdateModel()
 					if (eating)
 					{
 						snake.Grow();
+						goal.Respawn(rng, brd, snake);
+						sfxEat.Play(rng, 0.8f);
 
 					}
 					snake.MoveBy(delta_loc);
-					if (eating)
-					{
-						goal.Respawn(rng, brd, snake);
-					}
+					sfxSlither.Play(rng, 0.08f);
 				}
 			}
 			++snakeSpeedUpCounter;
@@ -100,6 +102,7 @@ void Game::UpdateModel()
 	{
 		if (wnd.kbd.KeyIsPressed(VK_RETURN))
 		{
+			sndMusic.Play(1.0f, 0.6f);
 			gameIsStarted = true;
 		}
 	}
